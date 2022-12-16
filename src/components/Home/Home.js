@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Widgets />
       <SearchBar />
-      <SearchResult />
+     
     </>
   );
 }

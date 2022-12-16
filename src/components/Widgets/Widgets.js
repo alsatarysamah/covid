@@ -3,15 +3,16 @@ import { useEffect, useState } from "react";
 import "./Widgets.css";
 
 export default function Widgets() {
-  const [totalStat, setTotalStat] = useState("sama");
+  const [totalStat, setTotalStat] = useState([]);
   useEffect(() => {
     axios.get("https://api.covid19api.com/world/total").then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
       setTotalStat(data.data);
-      console.log(totalStat);
+    //   console.log(totalStat);
      
     });
   }, []);
+  console.log(totalStat);
   return (
     <>
       {" "}
@@ -21,8 +22,55 @@ export default function Widgets() {
       />
       <div className="container2 container-xl">
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 justify-content-between ">
-          {totalStat.map((element) => (
+        <div class="col">
+              <div class="card radius-10  border-0 border-3 ">
+                <div class="card-body">
+                  <div class="d-flex align-items-center ">
+                    <div>
+                      <p class="mb-0 text-secondary">Total Confirmed</p>
+                      <h4 class="my-1 text-danger">{totalStat.TotalConfirmed}</h4>
+                    </div>
+                    <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto">
+                      <i class="fa fa-th-list"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="col">
+              <div class="card radius-10  border-0 border-3 ">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <p class="mb-0 text-secondary">Total Deaths</p>
+                      <h4 class="my-1 text-danger">{totalStat.TotalDeaths}</h4>
+                    </div>
+                    <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto"><i class="fa fa-dollar"></i>
+				   </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card radius-10  border-0 border-3 ">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <p class="mb-0 text-secondary">Total Recovered</p>
+                      <h4 class="my-1 text-danger">{totalStat.TotalRecovered}</h4>
+                    </div>
+                    <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class="fa fa-bar-chart"></i>
+				   </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </>
+  );
+}
+/**   <div class="col">
               <div class="card radius-10  border-0 border-3 ">
                 <div class="card-body">
                   <div class="d-flex align-items-center">
@@ -37,10 +85,4 @@ export default function Widgets() {
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
-  );
-}
+            </div> */
