@@ -1,0 +1,173 @@
+
+
+ .search-bar {
+    border-radius: 100px;
+    background: #fff;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    padding: 5px;
+    margin-top: 30px;
+    padding-left: 30px
+}
+
+.search-bar .form-group {
+    margin-bottom: 0;
+    position: relative
+}
+
+.search-bar .form-group label {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    cursor: pointer;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 0.8em
+}
+
+.search-bar .form-group::after {
+    content: '';
+    display: block;
+    height: 60%;
+    width: 1px;
+    background: #ddd;
+    position: absolute;
+    top: 20%;
+    right: 0
+}
+
+.search-bar .form-group:nth-of-type(3)::after,.search-bar .form-group:last-of-type::after {
+    display: none
+}
+
+.search-bar input,.search-bar .bootstrap-select {
+    background: none;
+    border: none;
+    padding: 20px 0 15px;
+    width: 100%
+}
+
+.search-bar input::-moz-placeholder,.search-bar .bootstrap-select::-moz-placeholder {
+    color: #aaa;
+    font-weight: 300;
+    font-family: "Poppins",sans-serif
+}
+
+.search-bar input::-webkit-input-placeholder,.search-bar .bootstrap-select::-webkit-input-placeholder {
+    color: #aaa;
+    font-weight: 300;
+    font-family: "Poppins",sans-serif
+}
+
+.search-bar input:-ms-input-placeholder,.search-bar .bootstrap-select:-ms-input-placeholder {
+    color: #aaa;
+    font-weight: 300;
+    font-family: "Poppins",sans-serif
+}
+
+.search-bar .bootstrap-select {
+    width: 100% !important;
+    padding: 0
+}
+
+.search-bar .bootstrap-select .dropdown-toggle {
+    background: none !important;
+    outline: 0 !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 20px 0 15px;
+    color: #aaa;
+    font-weight: 300;
+    font-family: "Poppins",sans-serif
+}
+
+.search-bar .bootstrap-select .dropdown-toggle::after {
+    display: none
+}
+
+.search-bar .bootstrap-select .dropdown-toggle:focus {
+    outline: 0 !important
+}
+
+.search-bar .submit {
+    background: #379392;
+    color: #fff;
+    font-family: "Vidaloka",serif;
+    border-radius: 100px;
+    font-size: 1.3em;
+    cursor: pointer;
+    
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+@media (max-width: 992px) {
+    section.hero h1.verified::after {
+        bottom:10px;
+        right: -40px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        background: #379392;
+        text-align: center
+    }
+
+    .search-bar {
+        background: none;
+        padding: 10px 0
+    }
+
+    .search-bar .form-group::after {
+        display: none
+    }
+
+    .search-bar .form-group label {
+        right: 30px
+    }
+
+    .search-bar input,.search-bar .bootstrap-select {
+        background: #fff;
+        margin-bottom: 15px;
+        padding: 10px 20px;
+        border-radius: 50px
+    }
+
+    .search-bar .bootstrap-select {
+        padding: 0
+    }
+
+    .search-bar .bootstrap-select button {
+        padding: 10px 20px
+    }
+
+    .search-bar label {
+        top: calc(50% - 8px) !important
+    }
+
+    .search-bar .submit {
+        margin-top: 15px
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
