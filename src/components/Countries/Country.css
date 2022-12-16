@@ -31,6 +31,7 @@ body{margin-top:20px;margin-bottom: 20px;}
         padding-bottom: 40px;
     }
 }
+
 .section-title.title-ex1 h2:before {
     content: "";
     position: absolute;
@@ -131,9 +132,9 @@ body{margin-top:20px;margin-bottom: 20px;}
     font-weight: 200;
 }
 .price-card .btn {
-    font-size: 11px;
-    border-radius: 100px;
-    padding:  25px;
+    font-size: 15px;
+    border-radius: 10px;
+    padding:  10px;
     border: 0;
     color: #fff;
     float: right;
@@ -203,10 +204,21 @@ ul li {
 .btn.btn-mid {
     height: 40px;
     line-height: 10px;
-    padding: 0 20px;
+    padding: 20px 20px;
  
 }
 .btn.btn-primary{
     /* background-color:  */
     background: #0cc652;
+  
+}
+.pricing-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.add-btn{
+    padding-left: 3px;
+    padding-right: 3px;
 }
