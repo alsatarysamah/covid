@@ -28,7 +28,13 @@ code {
    max-width: 600px;
  } */
 
- .add_btn{
+ /* .add_btn{
   color:royalblue;
- }
+ } */
 
+ 
+
+
+.small-container {
+  max-width: 600px;
+}

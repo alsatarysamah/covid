@@ -12,7 +12,6 @@ export default function Widgets() {
      
     });
   }, []);
-  console.log(totalStat);
   return (
     <>
       {" "}
@@ -27,8 +26,8 @@ export default function Widgets() {
                 <div class="card-body">
                   <div class="d-flex align-items-center ">
                     <div>
-                      <p class="mb-0 text-secondary">Total Confirmed</p>
-                      <h4 class="my-1 text-danger">{totalStat.TotalConfirmed}</h4>
+                      <p class="mb-0 text-secondary ">Total Confirmed</p>
+                      <h4 class="my-1 text-danger font-weight-bold">{totalStat.TotalConfirmed}</h4>
                     </div>
                     <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto">
                       <i class="fa fa-th-list"></i>

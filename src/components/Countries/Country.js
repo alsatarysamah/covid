@@ -1,29 +1,56 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Country.css";
+import { Store } from "../../store";
+
 
 export default function Country() {
   const [allCountries, setAllCountries] = useState([]);
+  const { state, dispatch } = useContext(Store);
+  const  userInfo  = state.userInfo;
 
-  const handleAddRecord=(record)=>{
-    console.log({record});
-  }
+  
+  const handleAddRecord = async (record) => {
+    const { data } = await axios.post("http://localhost:5050/record", {
+      country: record.Country,
+      totalConfirmedCases: record.TotalConfirmed,
+      totalDeathsCases: record.TotalDeaths,
+      totalRecoveredCases: record.TotalRecovered,
+      Date: record.Date,
+      userId: userInfo.userInfo.id
+    },{
+      headers: {
+          'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        Authorization: `Bearer ${userInfo.userInfo.token}`
+      }});
+     
+  };
+  
   useEffect(() => {
-    axios.get("https://api.covid19api.com/summary").then((data) => {
-      setAllCountries(data.data.Countries);
-      console.log(data.data.Countries);
-    });
+    axios
+      .get("https://api.covid19api.com/summary")
+      .then((data) => {
+        setAllCountries(data.data.Countries);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }, []);
   return (
     <>
-      <section >
+      <section>
         <div class="container ">
-        <div class="row h-25 mt-5">
-          {allCountries?.map((element) => (
-            
-            <div class="col-md-3 mt-3">
+          <div class="row h-25 mt-5">
+            {/* <h1>all Countries statices</h1> */}
+
+            {allCountries?.map((element) => (
+              <div class="col-md-3 mt-3">
                 <div class="price-card featured">
-                  <h2>Country: {element.Country.slice(0,element.Country.indexOf(" "))} </h2>
+                  <h2>
+                    Country:{" "}
+                    {element.Country.slice(0, element.Country.indexOf(" "))}{" "}
+                  </h2>
                   {/* <p>Most popular choice</p> */}
                   <ul class="pricing-offers">
                     <li>Total Confirmed: {element.TotalConfirmed}</li>
@@ -33,14 +60,19 @@ export default function Country() {
                     <li>Date: {element.Date}</li>
                   </ul>
                   <div className="add-btn">
-                    <button class="btn btn-primary btn-lg  " onClick={()=>handleAddRecord(element)}>Add</button>
+                    <button
+                    id="delete-btn"
+                      // class="btn btn-primary btn-lg  "
+                      onClick={() => handleAddRecord(element)}
+                    >
+                      Add
+                    </button>
                   </div>
                 </div>
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
-        </div>
-
       </section>
     </>
   );

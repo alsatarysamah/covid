@@ -147,6 +147,7 @@ body{margin-top:20px;margin-bottom: 20px;}
     border: 0 !important;
     padding: 10px;
     margin-bottom: 30px;
+    background-color:#F7A4A4;
 
 }
 .price-card.featured {
@@ -207,11 +208,11 @@ ul li {
     padding: 20px 20px;
  
 }
-.btn.btn-primary{
-    /* background-color:  */
+/* .btn.btn-primary{
+  
     background: #0cc652;
   
-}
+} */
 .pricing-section {
     display: flex;
     flex-wrap: wrap;
