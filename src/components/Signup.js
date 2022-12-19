@@ -31,7 +31,7 @@ export default function Signup() {
     }
     
       axios
-        .post("https://covid-19-asac.up.railway.appsignup", { username, password, email })
+        .post("https://covid-19-asac.up.railway.app/signup", { username, password, email })
         .then((data) => {
            sessionStorage.setItem('userInfo', JSON.stringify(data));
           navigate('/signin');

@@ -15,7 +15,7 @@ const navigate =useNavigate();
     console.log(userInfo);
     if(userInfo.id)
     axios
-      .post("https://covid-19-asac.up.railway.apprecord", {
+      .post("https://covid-19-asac.up.railway.app/record", {
         country: record.Country,
         totalConfirmedCases: record.TotalConfirmed,
         totalDeathsCases: record.TotalDeaths,
