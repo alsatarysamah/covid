@@ -4,13 +4,14 @@ export const Store = createContext();
 
 const initialState = {
   userInfo: {
-    userInfo: localStorage.getItem("userInfo")
+    userInfo:sessionStorage.getItem("userInfo")
       ? JSON.parse(localStorage.getItem("userInfo"))
       : [],
   },
  
 };
 function reducer(state, action) {
+  console.log("stor====>",action.payload);
   switch (action.type) {
    
     case "USER_SIGNIN":

@@ -44,7 +44,7 @@ export default function Widgets() {
                       <p class="mb-0 text-secondary">Total Deaths</p>
                       <h4 class="my-1 text-danger">{totalStat.TotalDeaths}</h4>
                     </div>
-                    <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto"><i class="fa fa-dollar"></i>
+                    <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto"><i class="fa fa-th-list"></i>
 				   </div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@ export default function Widgets() {
                       <p class="mb-0 text-secondary">Total Recovered</p>
                       <h4 class="my-1 text-danger">{totalStat.TotalRecovered}</h4>
                     </div>
-                    <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class="fa fa-bar-chart"></i>
+                    <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class="fa fa-th-list"></i>
 				   </div>
                   </div>
                 </div>
@@ -69,19 +69,3 @@ export default function Widgets() {
     </>
   );
 }
-/**   <div class="col">
-              <div class="card radius-10  border-0 border-3 ">
-                <div class="card-body">
-                  <div class="d-flex align-items-center">
-                    <div>
-                      <p class="mb-0 text-secondary">Total Orders</p>
-                      <h4 class="my-1 text-info">4805</h4>
-                      <p class="mb-0 font-13">+2.5% from last week</p>
-                    </div>
-                    <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto">
-                      <i class="fa fa-th-list"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */

@@ -8,10 +8,13 @@ import Country from "./components/Countries/Country";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 import Records from "./components/Records/Records";
-
+import {  ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div className="d-flex flex-column site">
+      {/* <ToastContainer position="top-center" limit={1} /> */}
+
       <header>
         <NavBarT></NavBarT>
       </header>

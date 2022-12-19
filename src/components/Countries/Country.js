@@ -1,32 +1,37 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Country.css";
-import { Store } from "../../store";
-
+import { Helmet } from "react-helmet-async";
+import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function Country() {
   const [allCountries, setAllCountries] = useState([]);
-  const { state, dispatch } = useContext(Store);
-  const  userInfo  = state.userInfo;
-
-  
+  const [userInfo, setUserInfo] = useState(
+    JSON.parse(sessionStorage.getItem("userInfo")) || []
+  );
+const navigate =useNavigate();
   const handleAddRecord = async (record) => {
-    const { data } = await axios.post("http://localhost:5050/record", {
-      country: record.Country,
-      totalConfirmedCases: record.TotalConfirmed,
-      totalDeathsCases: record.TotalDeaths,
-      totalRecoveredCases: record.TotalRecovered,
-      Date: record.Date,
-      userId: userInfo.userInfo.id
-    },{
-      headers: {
-          'Access-Control-Allow-Origin' : '*',
-            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        Authorization: `Bearer ${userInfo.userInfo.token}`
-      }});
-     
+    console.log(userInfo);
+    if(userInfo.id)
+    axios
+      .post("http://localhost:5050/record", {
+        country: record.Country,
+        totalConfirmedCases: record.TotalConfirmed,
+        totalDeathsCases: record.TotalDeaths,
+        totalRecoveredCases: record.TotalRecovered,
+        Date: record.Date,
+        userId: userInfo.id,
+      })
+      .then((data) => {
+        console.log(data.data);
+        toast.success("Added Successfuly")
+
+      });
+      else
+      navigate("/signin",{redirect:"/country"})
   };
-  
+
   useEffect(() => {
     axios
       .get("https://api.covid19api.com/summary")
@@ -40,37 +45,44 @@ export default function Country() {
   return (
     <>
       <section>
-        <div class="container ">
-          <div class="row h-25 mt-5">
-            {/* <h1>all Countries statices</h1> */}
+        <div className="d-flex flex-column mt-5">
+          <Helmet>
+            <title>All Countries</title>
+          </Helmet>
+      <ToastContainer position="top-center" limit={1} />
 
-            {allCountries?.map((element) => (
-              <div class="col-md-3 mt-3">
-                <div class="price-card featured">
-                  <h2>
-                    Country:{" "}
-                    {element.Country.slice(0, element.Country.indexOf(" "))}{" "}
-                  </h2>
-                  {/* <p>Most popular choice</p> */}
-                  <ul class="pricing-offers">
-                    <li>Total Confirmed: {element.TotalConfirmed}</li>
-                    <li>Total Deaths: {element.TotalDeaths}</li>
-                    <li>Total Recovered: {element.TotalRecovered}</li>
+          <h2 className="mt-3">All Countries Statistics</h2>
 
-                    <li>Date: {element.Date}</li>
-                  </ul>
-                  <div className="add-btn">
-                    <button
-                    id="delete-btn"
-                      // class="btn btn-primary btn-lg  "
-                      onClick={() => handleAddRecord(element)}
-                    >
-                      Add
-                    </button>
+          <div class="container ">
+            <div class="row h-25 mt-5">
+              {allCountries?.map((element) => (
+                <div class="col-md-3 mt-3">
+                  <div class="price-card featured">
+                    <h2>
+                      Country:{" "}
+                      {element.Country.slice(0, element.Country.indexOf(" "))}{" "}
+                    </h2>
+                    {/* <p>Most popular choice</p> */}
+                    <ul class="pricing-offers">
+                      <li>Total Confirmed: {element.TotalConfirmed}</li>
+                      <li>Total Deaths: {element.TotalDeaths}</li>
+                      <li>Total Recovered: {element.TotalRecovered}</li>
+
+                      <li>Date: {element.Date}</li>
+                    </ul>
+                    <div className="add-btn">
+                      <button
+                        id="delete-btn"
+                        // class="btn btn-primary btn-lg  "
+                        onClick={() => handleAddRecord(element)}
+                      >
+                        Add
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

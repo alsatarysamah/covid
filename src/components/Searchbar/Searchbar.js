@@ -13,23 +13,32 @@ export default function SearchBar() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-
+    console.log(
+      `https://api.covid19api.com/country/${country}/status/confirmed?from=${convertToISO(
+        startDate
+      )}&to=${convertToISO(endDate)}`
+    );
     axios
       .get(
-        // `https://api.covid19api.com/country/${country}/status/confirmed?from=${convertToISO(startDate)}&to=${convertToISO(endDate)}`    )
-        // "https://api.covid19api.com/country/jordan/status/confirmed?from=2020-03-01T00:00:00Z&to=2021-04-01T00:00:00Z"
-        // "https://api.covid19api.com/country/jordan/status/confirmed?from=2020-08-05T00:00:00Z&to=2020-08-05T00:00:00Z"
-        "https://api.covid19api.com/country/jordan/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z"
+        `https://api.covid19api.com/country/${country}/status/confirmed?from=${convertToISO(
+          startDate
+        )}&to=${convertToISO(endDate)}`
       )
+      
       .then((data) => {
-        setResults(data.data)
+        setResults(data.data);
         console.log(data.data);
       });
   };
-  const convertToISO = (date) => {
-    let convertedDate = new Date(JSON.stringify(startDate).slice(1, 11));
-    return convertedDate.toISOString();
+   const convertToISO = (date) => {
+    console.log(typeof date);
+    console.log(date.toISOString());
+    // return date.toISOString();
+    // let convertedDate = new Date(JSON.stringify(startDate).slice(1, 11));
+    // console.log(convertedDate.toISOString().slice(2,-2)+"Z");
+    return `${date.toISOString().slice(2,-2)}Z`;
   };
+
   return (
     <>
       <div class="search-bar col-lg-8 mx-auto ">
@@ -42,18 +51,20 @@ export default function SearchBar() {
                 placeholder="Country?"
                 id="country"
                 onChange={(e) => {
-                  console.log(country);
                   setCountry(e.target.value);
                 }}
+                required
               />
             </div>
 
             <div class="form-group col-lg-3">
               <input
                 type="date"
+                data-date-format="yyyy-mm-dd"
                 onChange={(e) => {
                   setStartDate(new Date(e.target.value));
                 }}
+                required
               />
               <label>
                 <i class="fa fa-calendar"></i>
@@ -62,14 +73,17 @@ export default function SearchBar() {
             <div class="form-group col-lg-3">
               <input
                 type="date"
+             
                 onChange={(e) => {
-                  setEndDate(e.target.value);
+                  setEndDate(new Date(e.target.value));
                 }}
+                required
               />
               <label>
                 <i class="fa fa-calendar"></i>
               </label>
             </div>
+            
 
             <div class="form-group col-lg-2 d-flex justify-content-center">
               <input type="submit" value="Search" class="submit " />
@@ -77,11 +91,11 @@ export default function SearchBar() {
           </div>
         </form>
       </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 justify-content-between mt-3">
-
-      {results.map((element)=>(<SearchResult date={element.Date} cases={element.Cases}/>))}
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 justify-content-between mt-3">
+        {results.map((element, idx) => (
+          <SearchResult key={idx} date={element.Date} cases={element.Cases} />
+        ))}
       </div>
-
     </>
   );
 }
