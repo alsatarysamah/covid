@@ -1,0 +1,13 @@
+#delete-btn {
+  background-color: #F7A4A4;
+    color: #ffff;
+    font-family: "Vidaloka",serif;
+    border-radius: 100px;
+    border: #F7A4A4;
+    font-size: 1.3em;
+    cursor: pointer;
+    
+}
+#delete-btn:hover{
+background-color: #B6E2A1;
+}
