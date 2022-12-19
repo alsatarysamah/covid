@@ -28,7 +28,7 @@ export default function Signin() {
 
       console.log({ username });
       const response = await superAgent
-        .post("http://localhost:5050/signin")
+        .post("https://covid-19-asac.up.railway.appsignin")
         .set("authorization", `Basic ${base64.encode(`${email}:${password}`)}`);
       sessionStorage.setItem("userInfo", JSON.stringify(response.body.user));
       if (location.state) navigate(`${location.state.redirect}`);
