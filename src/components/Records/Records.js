@@ -17,7 +17,7 @@ export default function Records() {
 
 
   const getdata = () => {
-    axios.get(`http://localhost:5050/record/${userInfo.id}`).then((data) => {
+    axios.get(`https://covid-19-asac.up.railway.app/record/${userInfo.id}`).then((data) => {
      
       setRecords(data.data);
     });
@@ -26,7 +26,7 @@ export default function Records() {
   const handleDelete = async (record) => {
     console.log("lllllllllll ", userInfo.length);
 
-    axios.delete(`http://localhost:5050/record/${record.id}`).then((data) => {
+    axios.delete(`https://covid-19-asac.up.railway.app/record/${record.id}`).then((data) => {
       setIsDeleted(!isDeleted);
    toast.success("Deleted")
     });

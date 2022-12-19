@@ -16,23 +16,18 @@ export default function Signin() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { state, dispatch } = useContext(Store);
-  const userInfo = state.userInfo;
-  // console.log(location.redirect);
+  
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      console.log({ email });
-      console.log({ password });
-      let username = email;
-
-      console.log({ username });
+     
       const response = await superAgent
-        .post("http://localhost:5050/signin")
+        .post("https://covid-19-asac.up.railway.app/signin")
         .set("authorization", `Basic ${base64.encode(`${email}:${password}`)}`);
+        console.log(response.body.user);
       sessionStorage.setItem("userInfo", JSON.stringify(response.body.user));
-      if (location.state) navigate(`${location.state.redirect}`);
-      else navigate("/");
+      // if (location.state) navigate(`${location.state.redirect}`);
+       navigate("/");
     } catch (err) {
       toast.error("invalid password or username");
       console.log(err);
