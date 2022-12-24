@@ -7,7 +7,7 @@ import { Store } from "../store";
 import { toast, ToastContainer } from "react-toastify";
 import superAgent from "superagent";
 import base64 from "base-64";
-import axios from "axios";
+import * as axios from 'axios';
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 
 export default function Signin() {
@@ -22,7 +22,7 @@ export default function Signin() {
     try {
      
       const response = await superAgent
-        .post("https://covid-19-asac.up.railway.app/signin")
+        .post("https://asac.onrender.com/signin")
         .set("authorization", `Basic ${base64.encode(`${email}:${password}`)}`);
         console.log(response.body.user);
       sessionStorage.setItem("userInfo", JSON.stringify(response.body.user));
@@ -33,11 +33,11 @@ export default function Signin() {
       console.log(err);
     }
   };
-
+ 
   return (
     <Container>
       <Helmet>
-        <title>Signup</title>
+        <title>Signin</title>
       </Helmet>
       <Row className="vh-100 d-flex justify-content-center align-items-center">
         <Col md={8} lg={5} xs={12}>
