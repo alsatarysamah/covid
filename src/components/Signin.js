@@ -22,7 +22,7 @@ export default function Signin() {
     try {
      
       const response = await superAgent
-        .post("https://asac.onrender.com/signin")
+        .post("https://covidserver.cleverapps.io/signin")
         .set("authorization", `Basic ${base64.encode(`${email}:${password}`)}`);
         console.log(response.body.user);
       sessionStorage.setItem("userInfo", JSON.stringify(response.body.user));

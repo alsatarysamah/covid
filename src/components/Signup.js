@@ -31,7 +31,7 @@ export default function Signup() {
     }
     
       axios
-        .post("https://asac.onrender.com/signup", { username, password, email })
+        .post("https://covidserver.cleverapps.io/signup", { username, password, email })
         .then((data) => {
            sessionStorage.setItem('userInfo', JSON.stringify(data));
           navigate('/signin');

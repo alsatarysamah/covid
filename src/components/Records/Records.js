@@ -17,7 +17,7 @@ export default function Records() {
 
 
   const getdata = () => {
-    axios.get(`https://asac.onrender.com/record/${userInfo.id}`).then((data) => {
+    axios.get(`https://covidserver.cleverapps.io/record/${userInfo.id}`).then((data) => {
      
       setRecords(data.data);
     });
@@ -26,7 +26,7 @@ export default function Records() {
   const handleDelete = async (record) => {
     console.log("lllllllllll ", userInfo.length);
 
-    axios.delete(`https://asac.onrender.com/record/${record.id}`).then((data) => {
+    axios.delete(`https://covidserver.cleverapps.io/record/${record.id}`).then((data) => {
       setIsDeleted(!isDeleted);
    toast.success("Deleted")
     });
@@ -46,7 +46,7 @@ export default function Records() {
     if (userInfo.id) getdata();
   }, [isDeleted]);
 
-
+console.log(records);
   return (
     <>
     <section>

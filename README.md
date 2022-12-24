@@ -15,3 +15,5 @@ Axios for performing API Requests
 Bootstrap for layout and styling
 
 Deployment to a cloud provider ( GitHub Pages)
+
+** backend :covidServer
