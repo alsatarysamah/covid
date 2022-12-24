@@ -11,7 +11,6 @@ export default function NavBarT() {
     sessionStorage.getItem("userInfo") || []
   );
 
-  console.log(userInfo);
 
   const handleSignout=(e)=>{
 sessionStorage.removeItem("userInfo")
